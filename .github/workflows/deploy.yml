@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 192.168.0.23
+          username: admin123
+          key: ${{ secrets.SSH_KEY }}
+          port: 2222
+          script: |
+            cd /home/admin123/sitio
+            git pull
+            pm2 restart sitio
