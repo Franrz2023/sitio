@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalla Robótica Capacitaciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="loader" class="loader-overlay">
+    <div class="loader-dots">
+      <div class="loader-dots-inner">
+        <div class="loader-dot-group">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="loader-dot-group">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="loader-dot-group">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loader-text" id="loaderText">Preparando</div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="logo">Batalla Robótica</a>
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#programas">Programas</a>
+        <a href="#galeria">Galería</a>
+        <a href="#inscribirme" class="btn-nav">Inscribirme</a>
+      </div>
+      <button class="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Capacitación Docente 2025</span>
+      <h1>Transformá tu aula con <span class="text-gradient">robótica educativa</span></h1>
+      <p>Capacitamos docentes en robótica educativa con metodologías activas e integración curricular transversal. Descubrí el programa ideal para tu nivel.</p>
+      <div class="hero-actions">
+        <a href="#programas" class="btn-primary">Ver programas</a>
+        <a href="#galeria" class="btn-secondary">Galería</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-shape"></div>
+    </div>
+  </section>
+
+  <section id="programas" class="programas">
+    <div class="section-header">
+      <span class="section-tag">Programas</span>
+      <h2>Elegí el nivel que enseñás</h2>
+      <p>Tres programas diseñados para cada etapa educativa, desde inicial hasta secundaria.</p>
+    </div>
+    <div class="programas-grid">
+      <div class="program-card" data-course="inicial">
+        <div class="card-glare"></div>
+        <div class="card-image" data-depth="20">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Nivel Inicial">
+          <span class="card-age" data-depth="30">3-5 años</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag" data-depth="40">Sin pantallas</span>
+          <h3 data-depth="35">Nivel Inicial</h3>
+          <p data-depth="20">Desarrollo lógico y espacial con lógicas tangibles, protegiendo el desarrollo cognitivo temprano.</p>
+          <button class="btn-card" data-depth="50" onclick="openCourseModal('inicial')">Detalles e Inscripción</button>
+        </div>
+      </div>
+      <div class="program-card" data-course="primaria">
+        <div class="card-glare"></div>
+        <div class="card-image" data-depth="20">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Nivel Primario">
+          <span class="card-age" data-depth="30">6-11 años</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag" data-depth="40">STEAM</span>
+          <h3 data-depth="35">Nivel Primario</h3>
+          <p data-depth="20">Metodología STEAM con bloques visuales interactivos y resolución de problemas en el aula.</p>
+          <button class="btn-card" data-depth="50" onclick="openCourseModal('primaria')">Detalles e Inscripción</button>
+        </div>
+      </div>
+      <div class="program-card" data-course="secundaria">
+        <div class="card-glare"></div>
+        <div class="card-image" data-depth="20">
+          <img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?w=600&q=80" alt="Nivel Secundario">
+          <span class="card-age" data-depth="30">12-17 años</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag" data-depth="40">Electrónica</span>
+          <h3 data-depth="35">Nivel Secundario</h3>
+          <p data-depth="20">Diseño 3D, lenguajes basados en texto y electrónica aplicada a sistemas automatizados.</p>
+          <button class="btn-card" data-depth="50" onclick="openCourseModal('secundaria')">Detalles e Inscripción</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="galeria">
+    <div class="section-header">
+      <span class="section-tag">Galería</span>
+      <h2>Momentos de nuestra experiencia</h2>
+      <p>Docentes y estudiantes trabajando con tecnología educativa en el aula.</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80" alt="Galería 1" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&q=80" alt="Galería 2" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?w=600&q=80" alt="Galería 3" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&q=80" alt="Galería 4" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=600&q=80" alt="Galería 5" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&q=80" alt="Galería 6" class="gallery-item">
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>Batalla Robótica Capacitaciones</h4>
+        <p>Capacitación docente en robótica educativa.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <a href="mailto:email@gmail.com">email@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Batalla Robótica Capacitaciones. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="courseModal" class="modal" onclick="closeModalOutside(event)">
+    <div class="modal-wrapper">
+      <button class="modal-close" onclick="closeCourseModal()">&times;</button>
+      <div class="modal-layout">
+        <div class="modal-info">
+          <img id="modalImage" src="" alt="Curso">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDescription"></p>
+          <h4>Ejes temáticos</h4>
+          <ul id="modalTopics"></ul>
+        </div>
+        <div class="modal-form">
+          <h4>Inscribite ahora</h4>
+          <iframe src="https://tally.so/r/Y5eja6" frameborder="0" class="form-iframe"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
