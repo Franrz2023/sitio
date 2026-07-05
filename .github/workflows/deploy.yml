@@ -20,4 +20,5 @@ jobs:
           port: 5973
           script: |
             cd /var/www/html/resde
-            git pull origin master
+            git fetch origin
+            git reset --hard origin/master
