@@ -7,16 +7,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to VM
-        uses: appleboy/ssh-action@v1
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 192.168.0.23
-          username: admin123
-          key: ${{ secrets.SSH_KEY }}
-          port: 2222
+          host: 168.181.185.182
+          username: fran
+          key: ${{ secrets.VPS_KEY }}
+          port: 5973
           script: |
-            cd /home/admin123/sitio
-            git pull
-            pm2 restart sitio
+            cd /var/www/html/resde
+            git pull origin master
