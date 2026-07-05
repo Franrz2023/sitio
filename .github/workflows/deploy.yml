@@ -16,7 +16,7 @@ jobs:
         with:
           host: 168.181.185.182
           username: fran
-          key: ${{ secrets.VPS_KEY }}
+          key: ${{ secrets.VPS_key_resde }}
           port: 5973
           script: |
             cd /var/www/html/resde
