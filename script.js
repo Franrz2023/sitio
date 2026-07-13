@@ -1,52 +1,3 @@
-const loaderTexts = ['Preparando', 'Cursos', 'Capacitaciones', 'Innovacion'];
-let textIndex = 0;
-const textEl = document.getElementById('loaderText');
-
-function showWord(word, onDone) {
-  textEl.innerHTML = '';
-  const letters = word.split('');
-  letters.forEach((char, i) => {
-    const span = document.createElement('span');
-    span.className = 'loader-letter';
-    span.textContent = char;
-    textEl.appendChild(span);
-    requestAnimationFrame(() => {
-      span.style.transitionDelay = `${i * 0.012}s`;
-      span.classList.add('in');
-    });
-  });
-  const totalDelay = letters.length * 0.012 + 80;
-  if (onDone) setTimeout(onDone, totalDelay);
-}
-
-function hideWord(onDone) {
-  const letters = textEl.querySelectorAll('.loader-letter');
-  if (!letters.length) { if (onDone) onDone(); return; }
-  letters.forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.008}s`;
-    el.classList.remove('in');
-    el.classList.add('out');
-  });
-  const delay = letters.length * 0.008 + 80;
-  if (onDone) setTimeout(onDone, delay);
-}
-
-function cycleText() {
-  hideWord(() => {
-    textIndex = (textIndex + 1) % loaderTexts.length;
-    showWord(loaderTexts[textIndex]);
-  });
-}
-
-showWord(loaderTexts[0]);
-setInterval(cycleText, 450);
-
-setTimeout(() => {
-  hideWord(() => {
-    document.getElementById('loader').classList.add('hidden');
-  });
-}, 2000);
-
 const courses = {
   inicial: {
     title: 'Nivel Inicial (3-5 años) — Sin pantallas',
@@ -88,6 +39,29 @@ const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalDescription = document.getElementById('modalDescription');
 const modalTopics = document.getElementById('modalTopics');
+const galleryModal = document.getElementById('galleryModal');
+const galleryModalImage = document.getElementById('galleryModalImage');
+
+function openGalleryImage(button) {
+  const imageUrl = button.dataset.image;
+  const title = button.dataset.title || 'Galería';
+
+  galleryModalImage.src = imageUrl;
+  galleryModalImage.alt = title;
+  galleryModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+  galleryModal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeGalleryModalOutside(event) {
+  if (event.target === galleryModal) {
+    closeGalleryModal();
+  }
+}
 
 function openCourseModal(key) {
   const course = courses[key];
@@ -121,8 +95,12 @@ function closeModalOutside(event) {
 }
 
 document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape' && modal.classList.contains('active')) {
-    closeCourseModal();
+  if (event.key === 'Escape') {
+    if (galleryModal.classList.contains('active')) {
+      closeGalleryModal();
+    } else if (modal.classList.contains('active')) {
+      closeCourseModal();
+    }
   }
 });
 
@@ -136,6 +114,12 @@ menuToggle.addEventListener('click', function () {
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function () {
     navLinks.classList.remove('open');
+  });
+});
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+  card.addEventListener('click', function () {
+    openGalleryImage(this);
   });
 });
 
